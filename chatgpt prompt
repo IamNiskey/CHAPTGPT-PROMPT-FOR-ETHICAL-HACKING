@@ -1,0 +1,68 @@
+General Web Application Security
+"Can you provide an overview of common web application security vulnerabilities and how to test for them in modern web applications?"
+"What are the OWASP Top 10 vulnerabilities for web applications, and how can I identify and mitigate them during a security assessment?"
+"How do I perform security testing on a web application with strong content security policies (CSP) and strict security headers?"
+"Can you walk me through a step-by-step guide for performing an end-to-end penetration test on a web application?"
+"What techniques can be used to bypass or test web application firewalls (WAFs) and intrusion prevention systems (IPS) during a penetration test?"
+"How do I perform a comprehensive audit of the authentication and authorization mechanisms in a web application?"
+"What are the best practices for securely managing API keys, tokens, and secrets in a web application? How do I test for mismanagement?"
+
+
+Bug Bounty Hunting
+"What are the best techniques for discovering high-impact vulnerabilities in bug bounty programs that have already been extensively tested?"
+"How can I identify misconfigurations and weak points in popular bug bounty platforms like HackerOne or Bugcrowd?"
+"Can you provide a methodology for testing mobile applications in a bug bounty program?"
+"What steps should I follow to test OAuth flows in web applications, and how can I identify scope escalation or token mismanagement?"
+"How can I identify business logic flaws in web applications during bug bounty hunting?"
+"What tools and techniques should I use to efficiently perform content discovery during bug bounty hunts?"
+"How can I automate the process of finding low-hanging fruit (e.g., outdated libraries, default credentials) in a bug bounty target?"
+
+
+Pentesting Methodology
+"Can you outline a detailed penetration testing methodology for modern single-page applications (SPAs) built with frameworks like React and Angular?"
+"What are the key steps in a black-box penetration test for a web application?"
+"How do I effectively combine manual testing with automated tools to perform a hybrid penetration test on a web application?"
+"Can you provide a methodology for testing the security of a GraphQL API endpoint?"
+"What tools should I use for testing server-side request forgery (SSRF) vulnerabilities in a web application, and what techniques can I use to exploit SSRF?"
+"How can I map out and test for insecure direct object references (IDOR) in web applications?"
+"Can you walk me through a pentesting methodology for finding and exploiting file upload vulnerabilities in web applications?"
+
+
+JavaScript Security and Vulnerability Scanning
+"What techniques can I use to identify and exploit vulnerabilities in JavaScript frameworks like Angular, React, or Vue.js?"
+"Can you explain how to perform DOM-based XSS testing in JavaScript-heavy applications?"
+"What tools are most effective for scanning JavaScript vulnerabilities, and how can I configure them for applications using frameworks like React or Angular?"
+"How do I identify and exploit cross-site scripting (XSS) vulnerabilities in JavaScript-heavy web applications?"
+"How can I test for insecure use of JavaScript libraries or frameworks in a web application?"
+"What are the best tools for performing a static analysis of JavaScript code to find potential vulnerabilities?"
+"Can you give an example of how an attacker might exploit a JavaScript vulnerability to steal session tokens or perform CSRF?"
+
+
+Content Discovery and API Testing
+"What are the best tools and techniques for performing content discovery on a web application to find hidden files, directories, and sensitive endpoints?"
+"How do I find and test hidden or undocumented API endpoints during a penetration test?"
+"What is the best way to perform content discovery on a server that has strict security headers like CSP and HSTS?"
+"Can you explain how to identify and exploit business logic flaws in an API?"
+"What are the best tools and methodologies for testing REST APIs for common vulnerabilities like broken authentication and authorization?"
+"How do I test GraphQL APIs for security vulnerabilities such as information disclosure, mass assignment, or rate-limiting issues?"
+"Can you guide me through using tools like ffuf or dirsearch for finding hidden resources in a web application?"
+
+
+Advanced Vulnerability Hunting
+"How can I perform privilege escalation testing in a web application to ensure that role-based access control (RBAC) is implemented securely?"
+"What techniques can I use to detect and exploit race conditions in web applications?"
+"How do I identify and exploit HTTP parameter pollution (HPP) vulnerabilities in a web application?"
+"What is the best way to test for cache poisoning vulnerabilities in web applications that use modern caching mechanisms?"
+"Can you provide an approach for testing for server-side template injection (SSTI) vulnerabilities in a web application?"
+"What techniques can I use to detect and exploit subdomain takeovers during a penetration test?"
+"How do I test for and exploit server-side request forgery (SSRF) in applications behind strict firewalls or proxies?"
+
+
+Tools and Automation
+"What are the best tools for automating vulnerability scanning of web applications, and how do I integrate them into my pentesting workflow?"
+"How can I use Burp Suite to automate vulnerability scanning and manual testing for complex web applications?"
+"Can you recommend automation frameworks for continuous security testing in CI/CD pipelines?"
+"What are some efficient ways to combine manual testing with automated tools like OWASP ZAP, Nikto, and Burp Suite for comprehensive web app security testing?"
+"How can I automate content discovery using tools like ffuf, dirsearch, or gobuster during a penetration test?"
+"What are the best tools to automate fuzzing in APIs to find hidden parameters and vulnerabilities?"
+"Can you walk me through setting up and using nmap, amass, and Sublist3r for network and subdomain enumeration in a web app pentest?"
