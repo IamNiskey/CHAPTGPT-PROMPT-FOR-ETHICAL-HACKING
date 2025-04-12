@@ -1,121 +1,119 @@
-1️⃣ Stealth-First Content Discovery: Hidden Files, Directories & Endpoints
-💬 Prompt:
-"Draft a structured approach to content discovery for web applications that balances stealth and depth. Include:
+# Content Discovery & API Testing — Exploitation Research Prompts
 
-passive intelligence gathering (Wayback Machine, Common Crawl, Github Dorks),
+>  **Purpose:**
+This document is designed for bug bounty hunters, ethical hackers, and penetration testers to use as a blueprint for thinking, testing, and exploiting hidden resources in modern web environments, especially APIs and shadow assets.
 
-active brute-force techniques (ffuf, dirsearch, feroxbuster) with tuned wordlists,
+---
 
-DNS subdomain brute-forcing and permutation scanning,
+## 1️⃣ Stealth-First Content Discovery: Hidden Files, Directories & Endpoints
 
-recursive path expansion (/dev/, /test/, /api/v1/, /v2/),
+**Prompt:**
+> Draft a structured approach to content discovery for web applications that balances stealth and depth. Include:
+>
+> - Passive intelligence gathering (Wayback Machine, Common Crawl, Github Dorks).
+> - Active brute-force techniques (`ffuf`, `dirsearch`, `feroxbuster`) with tuned wordlists.
+> - DNS subdomain brute-forcing and permutation scanning.
+> - Recursive path expansion (`/dev/`, `/test/`, `/api/v1/`, `/v2/`).
+> - Handling wildcard DNS poisoning.
+> - Directory indexing and misconfigured `.git`, `.svn`, `.env` exposures.
+> - Post-discovery validation techniques (fingerprinting & endpoint confirmation).
 
-handling wildcard DNS poisoning,
+---
 
-directory indexing and misconfigured .git, .svn, .env exposures,
+## 2️⃣ API Endpoint Discovery & Enumeration
 
-and post-discovery validation techniques (fingerprinting & endpoint confirmation)."
+**Prompt:**
+> Describe an end-to-end methodology for discovering hidden and undocumented API endpoints during a penetration test. Include:
+>
+> - Leveraging JavaScript parsing for hardcoded URLs.
+> - Reverse engineering mobile app traffic (Burp Suite + Frida + Objection).
+> - Fuzzing common API naming conventions (`/api/v1/`, `/internal/`, `/admin/`).
+> - Automated endpoint discovery using `LinkFinder`, `jsfinder`, or `subjs`.
+> - Exploring OpenAPI/Swagger descriptors for documented but undisclosed endpoints.
+> - Testing endpoint behaviors for information leakage, verbose error messages, and improper authentication enforcement.
 
-2️⃣ API Endpoint Discovery & Enumeration
-💬 Prompt:
-"Describe an end-to-end methodology for discovering hidden and undocumented API endpoints during a penetration test. Include:
+---
 
-leveraging JavaScript parsing for hardcoded URLs,
+## 3️⃣ Content Discovery Under Strong Security Headers (CSP, HSTS)
 
-reverse engineering mobile app traffic (Burp Suite + Frida + Objection),
+**Prompt:**
+> Outline techniques for performing effective content discovery on web applications fortified with CSP and HSTS headers, including:
+>
+> - Using HTTPS wordlist brute-force tools (`ffuf`, `feroxbuster` with `-k` and `-H` options for HSTS bypass attempts).
+> - Leveraging browser debug consoles to spot blocked resource patterns via CSP violation reports.
+> - Inspecting JavaScript stack traces for hidden file paths.
+> - Fingerprinting content distribution networks (CDNs) to spot asset routing and indirect discovery vectors.
+> - Using DNS zone transfers or misconfigured subdomains to sidestep CSP altogether.
 
-fuzzing common API naming conventions (/api/v1/, /internal/, /admin/),
+---
 
-automated endpoint discovery using LinkFinder, jsfinder, or subjs,
+##  4️⃣ Business Logic Flaws in APIs: Discovery & Exploitation
 
-exploring OpenAPI/Swagger descriptors for documented but undisclosed endpoints,
+**Prompt:**
+> Design a methodology to identify and exploit business logic vulnerabilities in APIs, including:
+>
+> - Bypassing parameter validation via sequence manipulation.
+> - Testing state-dependent workflows out-of-order (e.g. skip payment but process order).
+> - Using fuzzed values and incorrect object relationships (`user_id`, `order_id`) to trigger logic misbehaviors.
+> - Mass action enumeration (e.g., applying discounts to unintended targets).
+> - Automating logic flow mutations using Burp Suite macros, custom scripts, or tools like `autorepeater`.
 
-and testing endpoint behaviors for information leakage, verbose error messages, and improper authentication enforcement."
+---
 
-3️⃣ Content Discovery Under Strong Security Headers (CSP, HSTS)
-💬 Prompt:
-"Outline techniques for performing effective content discovery on web applications fortified with CSP and HSTS headers, including:
+## 5️⃣ REST API Security Testing Methodology
 
-using HTTPS wordlist brute-force tools (ffuf, feroxbuster with -k and -H options for HSTS bypass attempts),
+**Prompt:**
+> Develop a tactical checklist and toolset for testing REST APIs, focusing on:
+>
+> - Broken Authentication: session fixation, weak JWT secrets, token leakage, expired token reuse.
+> - Broken Authorization: horizontal privilege escalation, vertical privilege escalation, BOLA (Broken Object Level Authorization).
+> - Rate Limiting Bypass: token bucket abuse, IP rotation, X-Forwarded-For manipulation.
+> - Injection Attacks: JSON/XML/GraphQL injection, SQLi, NoSQLi.
+> - Using tools like: `Postman`, `Burp Suite`, `Autorize`, `JWT Tool`, `crlfuzz`.
 
-leveraging browser debug consoles to spot blocked resource patterns via CSP violation reports,
+---
 
-inspecting JavaScript stack traces for hidden file paths,
+## 6️⃣ GraphQL API Security Testing: Full Exploit Surface
 
-fingerprinting content distribution networks (CDNs) to spot asset routing and indirect discovery vectors,
+**Prompt:**
+> Explain a systematic approach for penetration testing GraphQL APIs. Cover:
+>
+> - Introspection abuse for schema enumeration.
+> - Over-fetching queries to bypass access control and leak unrelated data.
+> - Mass assignment attacks through input object mutation.
+> - Rate-limiting bypass by query obfuscation or batched mutations.
+> - Input-based injection via crafted GraphQL queries.
+> - Use of specialized tools: `InQL`, `GraphQLmap`, `Burp GraphQL Raider`.
 
-and using DNS zone transfers or misconfigured subdomains to sidestep CSP altogether."
+---
 
-4️⃣ Business Logic Flaws in APIs: Discovery & Exploitation
-💬 Prompt:
-"Design a methodology to identify and exploit business logic vulnerabilities in APIs, including:
+## 7️⃣ Practical Guide to `ffuf` & `dirsearch` for Hidden Resource Hunting
 
-bypassing parameter validation via sequence manipulation,
+**Prompt:**
+> Provide a hands-on guide for using `ffuf` and `dirsearch` to uncover hidden resources in web applications. Explain:
+>
+> - Difference in threading behavior and rate control.
+> - Optimal wordlist selection based on target tech stack.
+> - HTTP response code filtering and anomaly spotting.
+> - Recursive directory fuzzing for deep discovery.
+> - Handling wildcard and soft 404s.
+> - Chaining `ffuf` or `dirsearch` outputs into downstream attack scripts.
 
-testing state-dependent workflows out-of-order (e.g. skip payment but process order),
+---
 
-using fuzzed values and incorrect object relationships (user_id, order_id) to trigger logic misbehaviors,
+## Discovery to Exploitation Chain Building
 
-mass action enumeration (e.g., applying discounts to unintended targets),
+**Prompt:**
+> After identifying hidden endpoints with `ffuf` or `dirsearch`, automate follow-up vulnerability probes against each one for:
+>
+> - Open Redirects.
+> - XSS.
+> - IDOR.
+> - SSRF.
+> - Logic Flaws.
+>
+> Propose a bash/Python pipeline integrating `ffuf`, `gau`, `nuclei`, and `httpx` for maximum efficiency.
 
-and automating logic flow mutations using Burp Suite macros, custom scripts, or tools like autorepeater."
+---
 
-5️⃣ REST API Security Testing Methodology
-💬 Prompt:
-"Develop a tactical checklist and toolset for testing REST APIs, focusing on:
 
-Broken Authentication: session fixation, weak JWT secrets, token leakage, expired token reuse.
-
-Broken Authorization: horizontal privilege escalation, vertical privilege escalation, BOLA (Broken Object Level Authorization).
-
-Rate Limiting Bypass: token bucket abuse, IP rotation, X-Forwarded-For manipulation.
-
-Injection Attacks: JSON/XML/GraphQL injection, SQLi, NoSQLi.
-
-and using tools like: Postman, Burp Suite, Autorize, JWT Tool, crlfuzz."
-
-6️⃣ GraphQL API Security Testing: Full Exploit Surface
-💬 Prompt:
-"Explain a systematic approach for penetration testing GraphQL APIs. Cover:
-
-Introspection abuse for schema enumeration,
-
-Over-fetching queries to bypass access control and leak unrelated data,
-
-Mass assignment attacks through input object mutation,
-
-Rate-limiting bypass by query obfuscation or batched mutations,
-
-Input-based injection via crafted GraphQL queries,
-
-and use of specialized tools: InQL, GraphQLmap, Burp GraphQL Raider."
-
-7️⃣ Practical Guide to ffuf & dirsearch for Hidden Resource Hunting
-💬 Prompt:
-"Provide a hands-on guide for using ffuf and dirsearch to uncover hidden resources in web applications. Explain:
-
-difference in threading behavior and rate control,
-
-optimal wordlist selection based on target tech stack,
-
-HTTP response code filtering and anomaly spotting,
-
-recursive directory fuzzing for deep discovery,
-
-handling wildcard and soft 404s,
-
-and chaining ffuf or dirsearch outputs into downstream attack scripts."
-
-💬 Prompt:
-"After identifying hidden endpoints with ffuf or dirsearch, automate follow-up vulnerability probes against each one for:
-
-Open Redirects,
-
-XSS,
-
-IDOR,
-
-SSRF,
-
-and Logic Flaws.
-Propose a bash/Python pipeline integrating ffuf, gau, nuclei, and httpx."
