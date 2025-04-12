@@ -1,87 +1,91 @@
-General Web Application Security
-1️⃣ Vulnerability Discovery: Deep-Dive
-💬 Prompt:
-"Generate an actionable checklist of common web application vulnerabilities including parameter pollution, HTTP request smuggling, cache poisoning, and modern XSS vectors. Include the preferred tooling, techniques, and real-world payload examples for each."
+# Web Application Security Prompts
+**Objective:** These prompts are now lean, targeted, and tuned for real-world exploitation, covering both assessment mindset and post-exploitation thought processes. Use them in your GPT-powered recon, pentesting simulations, and bug bounty prep.
 
-2️⃣ OWASP Top 10: Pentest-Focused Breakdown
-💬 Prompt:
-"Explain the OWASP Top 10 2025 web application risks with examples of how each vulnerability is commonly exploited in the wild. Provide specific Burp Suite workflows, CLI-based test commands, and mitigation controls for developers and blue teams."
+---
 
-3️⃣ CSP & Security Headers: Hardened App Testing
-💬 Prompt:
-"How do I bypass or test the effectiveness of a web application's Content Security Policy (CSP) and HTTP security headers? Give me techniques for header misconfig detection, nonce-based bypass strategies, and JavaScript gadget hunting."
+## General Web Application Security
 
-4️⃣ End-to-End Penetration Testing Blueprint
-💬 Prompt:
-"Craft a complete step-by-step playbook for conducting an end-to-end blackbox penetration test on a modern web application, including:
+### 1️⃣ Vulnerability Discovery: Deep-Dive
 
-reconnaissance,
+> 💬 **Prompt:**
+> "Generate an actionable checklist of common web application vulnerabilities including parameter pollution, HTTP request smuggling, cache poisoning, and modern XSS vectors. Include the preferred tooling, techniques, and real-world payload examples for each."
 
-endpoint enumeration,
+---
 
-session management analysis,
+### 2️⃣ OWASP Top 10: Pentest-Focused Breakdown
 
-logic flaw hunting,
+> 💬 **Prompt:**
+> "Explain the OWASP Top 10 2025 web application risks with examples of how each vulnerability is commonly exploited in the wild. Provide specific Burp Suite workflows, CLI-based test commands, and mitigation controls for developers and blue teams."
 
-privilege escalation vectors,
+---
 
-and post-exploitation persistence."
+### 3️⃣ CSP & Security Headers: Hardened App Testing
 
-Deliver the output in checklist format, including both manual and automated tool references.
+> 💬 **Prompt:**
+> "How do I bypass or test the effectiveness of a web application's Content Security Policy (CSP) and HTTP security headers? Give me techniques for header misconfig detection, nonce-based bypass strategies, and JavaScript gadget hunting."
 
-5️⃣ WAF / IPS Evasion Tactics
-💬 Prompt:
-"Detail advanced payload crafting and behavioral anomaly techniques for bypassing modern Web Application Firewalls (WAF) and Intrusion Prevention Systems (IPS). Cover:
+---
 
-WAF fingerprinting,
+### 4️⃣ End-to-End Penetration Testing Blueprint
 
-encoding obfuscation tricks (double encoding, mixed case, padding),
+> 💬 **Prompt:**
+> "Craft a complete step-by-step playbook for conducting an end-to-end blackbox penetration test on a modern web application, including:
+> *   reconnaissance,
+> *   endpoint enumeration,
+> *   session management analysis,
+> *   logic flaw hunting,
+> *   privilege escalation vectors,
+> *   and post-exploitation persistence.
+>
+> Deliver the output in checklist format, including both manual and automated tool references."
 
-header smuggling payloads,
+---
 
-and logic-level bypass methods (using race conditions, fragmentation, or request splitting)."
+### 5️⃣ WAF / IPS Evasion Tactics
 
-6️⃣ Authentication & Authorization Audit Framework
-💬 Prompt:
-"Design a penetration testing framework for auditing authentication and authorization controls in web applications. Include methods for:
+> 💬 **Prompt:**
+> "Detail advanced payload crafting and behavioral anomaly techniques for bypassing modern Web Application Firewalls (WAF) and Intrusion Prevention Systems (IPS). Cover:
+> *   WAF fingerprinting,
+> *   encoding obfuscation tricks (double encoding, mixed case, padding),
+> *   header smuggling payloads,
+> *   and logic-level bypass methods (using race conditions, fragmentation, or request splitting)."
 
-brute-force detection and bypass,
+---
 
-2FA/MFA circumvention,
+### 6️⃣ Authentication & Authorization Audit Framework
 
-session fixation,
+> 💬 **Prompt:**
+> "Design a penetration testing framework for auditing authentication and authorization controls in web applications. Include methods for:
+> *   brute-force detection and bypass,
+> *   2FA/MFA circumvention,
+> *   session fixation,
+> *   JWT and token abuse,
+> *   privilege escalation via IDOR or misconfigured RBAC systems.
+>
+> Include specific exploitation scenarios and testing scripts."
 
-JWT and token abuse,
+---
 
-privilege escalation via IDOR or misconfigured RBAC systems."
+### 7️⃣ API Secrets & Token Management Testing
 
-Include specific exploitation scenarios and testing scripts.
+> 💬 **Prompt:**
+> "List best practices for secure storage and rotation of API keys, secrets, tokens, and private credentials in modern applications (Git, containers, serverless). Then provide a comprehensive testing methodology to detect mismanagement through:
+> *   source code analysis,
+> *   endpoint discovery,
+> *   accidental exposure via environment variables,
+> *   metadata leaks (AWS, GCP, Azure),
+> *   and GitHub secret scanning techniques."
 
-7️⃣ API Secrets & Token Management Testing
-💬 Prompt:
-"List best practices for secure storage and rotation of API keys, secrets, tokens, and private credentials in modern applications (Git, containers, serverless). Then provide a comprehensive testing methodology to detect mismanagement through:
+---
 
-source code analysis,
+### 8️⃣ Hacker Mindset Simulation: Internal Monologue
 
-endpoint discovery,
-
-accidental exposure via environment variables,
-
-metadata leaks (AWS, GCP, Azure),
-
-and GitHub secret scanning techniques."
-
-💬 Prompt:
-"Simulate a security consultant's internal monologue while performing a web app pentest. Think out loud, ask self-questions about:
-
-potential logic vulnerabilities,
-
-parameter relationships,
-
-state mismanagement,
-
-hidden functionality,
-
-and developer missteps.
-
-Output should mimic an experienced hacker's thought process during a real assessment."
+> 💬 **Prompt:**
+> "Simulate a security consultant's internal monologue while performing a web app pentest. Think out loud, ask self-questions about:
+> *   potential logic vulnerabilities,
+> *   parameter relationships,
+> *   state mismanagement,
+> *   hidden functionality,
+> *   and developer missteps.
+>
+> Output should mimic an experienced hacker's thought process during a real assessment."
