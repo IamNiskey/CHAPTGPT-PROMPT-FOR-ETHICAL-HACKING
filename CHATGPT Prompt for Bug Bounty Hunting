@@ -1,122 +1,116 @@
-1️⃣ High-Impact Vulnerability Hunting on Hardened Targets
-💬 Prompt:
-"List non-obvious techniques and research strategies for discovering high-impact vulnerabilities in bug bounty programs with mature security postures. Include:
+# Bug Bounty Hunting — Field Manual for Exploit Artists
 
-edge-case misconfigurations,
+> Purpose: This document contains structured prompts and methodologies tailored for real-world bug bounty operations, designed to sharpen recon, attack chains, and vulnerability discovery on hardened or widely tested targets.
 
-undocumented features,
+---
 
-logic flaw identification workflows,
+## 1️⃣ High-Impact Vulnerability Hunting on Hardened Targets
 
-endpoint discovery beyond wordlists (regex reverse engineering, sitemap poisoning, subdomain permutations),
+**Prompt:**
 
-API contract fuzzing,
+> List non-obvious techniques and research strategies for discovering high-impact vulnerabilities in bug bounty programs with mature security postures. Include:
+> - Edge-case misconfigurations (uncommon HTTP headers, protocol downgrades).
+> - Hunting undocumented features via JavaScript analysis, leaked changelogs, and public ticketing systems.
+> - Business logic flaw identification workflows (threat modeling + abuse case diagramming).
+> - Endpoint discovery beyond wordlists: regex reverse engineering of frontend code, sitemap poisoning, subdomain permutations based on org culture (e.g., `staging-`, `beta-`, `legacy-`).
+> - API contract fuzzing: mismatch hunting between frontend expectations and backend validation.
+> - Application state-machine abuse: session fixation, invalid state transitions, forced browsing beyond designed flows.
 
-and application state-machine abuse."
+---
 
-2️⃣ Platform-Level Recon & Weakness Enumeration
-💬 Prompt:
-"How do I fingerprint security controls and misconfigurations on bug bounty platforms like HackerOne and Bugcrowd? Detail tactics for:
+## 2️⃣ Platform-Level Recon & Weakness Enumeration
 
-out-of-scope target leakage,
+**Prompt:**
 
-asset overlap between programs,
+> How do I fingerprint security controls and misconfigurations on bug bounty platforms like HackerOne and Bugcrowd? Detail tactics for:
+> - Out-of-scope target leakage via misaligned scope configurations or cross-program shared services.
+> - Asset overlap between programs through ASN, IP history, and CDN leakage.
+> - Target acquisition via public report disclosures and recon of past bounty writeups.
+> - Metadata leaks via collaboration systems like Slack, Jira, Trello, or GDocs (`robots.txt`, leaked invites).
+> - Subdomain enumeration for private assets linked to public programs using permutation generators (`dnsgen`, `altdns`, `subbrute`).
 
-target acquisition through report disclosure analysis,
+---
 
-metadata leaks via collaboration tools (Slack, Jira, etc.),
+## 3️⃣ Mobile Application Pentesting Methodology for Bug Bounty
 
-subdomain enumeration for private assets linked to public programs."
+**Prompt:**
 
-3️⃣ Mobile Application Pentesting Methodology for Bug Bounty
-💬 Prompt:
-"Design a step-by-step approach for testing mobile applications within a bug bounty program, including:
+> Design a step-by-step approach for testing mobile applications within a bug bounty program, including:
+> - Static analysis: APK/IPA decompilation, manifest analysis, embedded secrets extraction.
+> - Dynamic runtime testing: Instrumentation using Frida, Objection, and Burp Mobile Assistant.
+> - HTTPS traffic interception and manipulation via MITM proxies.
+> - Backend misconfiguration: broken authentication, excessive data exposure, misconfigured CORS.
+> - Token/session hijacking scenarios.
+> - Client-side logic bypass and local storage exploitation.
 
-static analysis (APK/IPA reversing, manifest analysis),
+---
 
-dynamic runtime testing (Frida, Objection, Burp Mobile Assistant),
+## 4️⃣ OAuth Flow Abuse & Scope Escalation Techniques
 
-traffic manipulation,
+**Prompt:**
 
-API backend misconfigurations,
+> Outline a precise methodology for testing OAuth authorization flows during a bug bounty engagement. Focus on:
+> - Misconfigured Redirect URIs (wildcards, unvalidated input).
+> - Client-side token leakage via referer headers, local storage, or browser history.
+> - Token re-use or cross-account binding flaws.
+> - Manipulating state, nonce, and scope parameters to force privilege escalation.
+> - Privilege downgrading through flow switching (Authorization Code to Implicit).
+> - Exploiting session misbinding or mismanaged implicit flow weaknesses.
 
-token/session hijacking,
+---
 
-and client-side logic bypasses."
+## 5️⃣ Business Logic Flaw Detection Blueprint
 
-4️⃣ OAuth Flow Abuse & Scope Escalation Techniques
-💬 Prompt:
-"Outline a precise methodology for testing OAuth authorization flows during a bug bounty engagement. Focus on:
+**Prompt:**
 
-misconfigured redirect URIs,
+> Create a mental framework for detecting business logic flaws in modern web applications during bug bounty testing. Include techniques for:
+> - Understanding user stories and mapping abuse cases.
+> - Privilege manipulation via state replay attacks.
+> - Bypassing rate limits through timing attacks, logic holes, or state-based manipulations.
+> - Combining misaligned authorization logic with workflow disruption.
+> - Identifying and exploiting trust relationship misuse (between components, services, or identity providers).
 
-client-side token exposure,
+---
 
-token re-use or cross-account binding,
+## 6️⃣ Content Discovery: The Elite Hunter’s Playbook
 
-manipulating state, nonce, and scope parameters,
+**Prompt:**
 
-downgrading token privileges,
+> List advanced content discovery techniques for web application bug bounty targets. Go beyond common wordlists and cover:
+> - Recursive fuzzing for nested endpoints and parameter exploration.
+> - Intelligent endpoint inference using OpenAI embeddings, Markov Chains for naming conventions.
+> - CORS-enabled endpoint brute-force using domain-specific header tests.
+> - Extension-agnostic file hunting via wildcard payloads in `ffuf`.
+> - Parameter mining configurations (`Paraminer`, `ffuf`, `Burp Intruder`) tuned for edge-case discoveries.
+> - Path canonicalization bypass checks (`/./`, `//`, `%2e` variants).
 
-and exploiting poor session binding or implicit flow weaknesses."
+---
 
-5️⃣ Business Logic Flaw Detection Blueprint
-💬 Prompt:
-"Create a mental framework for detecting business logic flaws in modern web applications during bug bounty testing. Include techniques for:
+## 7️⃣ Automated Low-Hanging Fruit Exploitation Framework
 
-understanding user stories and abuse scenarios,
+**Prompt:**
 
-privilege manipulation through state replay,
+> Design an automated pipeline for detecting and exploiting low-hanging vulnerabilities in bug bounty programs, including:
+> - Outdated library detection using `npm audit`, `retire.js`, `osv-scanner`.
+> - Default credentials hunting via `shodan`, `censys` queries.
+> - Discovery of exposed `.git` folders, `.env` files, and config backups.
+> - Automated SSRF, Open Redirect, and reflected XSS detection scripts.
+> - Continuous monitoring for newly introduced subdomains, assets, and IPs.
+> - GitHub dorking patterns for secrets (`filename:.env OR filename:.git-credentials`).
 
-bypassing rate limits through logic instead of volume,
+---
 
-chaining misaligned authorization with workflow exploitation,
+## Simulated Bug Bounty Hunter's Mindset
 
-and leveraging misused trust relationships between components."
+**Prompt:**
 
-6️⃣ Content Discovery: The Elite Hunter’s Playbook
-💬 Prompt:
-"List advanced content discovery techniques for web application bug bounty targets. Go beyond common wordlists and cover:
+> Simulate the thought process of a professional bug bounty hunter when approaching an unknown web target. Narrate the:
+> - Enumeration steps (DNS, ASN, Subdomain, Virtual Hosts).
+> - Decision-making heuristics (scope evaluation, attack surface triage).
+> - Tooling choices based on discovered clues (Burp, nuclei, subfinder, ffuf).
+> - Risk vs reward estimations for each lead.
+> - Payload crafting logic with context-specific payloads.
+> - When to pivot strategies after false negatives or dry leads.
 
-recursive fuzzing strategies,
+---
 
-intelligent endpoint inference using machine learning output (OpenAI embeddings, Markov Chains),
-
-CORS-enabled endpoint brute-force discovery,
-
-extension-agnostic file hunting,
-
-parameter miner configurations (Paraminer, ffuf, Burp Intruder),
-
-and broken path canonicalization checks."
-
-7️⃣ Automated Low-Hanging Fruit Exploitation Framework
-💬 Prompt:
-"Design an automated pipeline for detecting and exploiting low-hanging vulnerabilities in bug bounty programs, including:
-
-outdated libraries (npm audit, retire.js, osv-scanner),
-
-default credentials via shodan/censys recon,
-
-exposed .git folders and sensitive config files,
-
-SSRF, open-redirects, and XSS auto-detection,
-
-continuous monitoring scripts for newly introduced assets,
-
-and GitHub dorking patterns for secrets discovery."
-
-💬 Prompt:
-"Simulate the thought process of a professional bug bounty hunter when approaching an unknown web target. Narrate the:
-
-enumeration steps,
-
-decision-making heuristics,
-
-tooling choices based on target clues,
-
-risk vs reward estimations,
-
-payload crafting logic,
-
-and when to pivot strategies mid-hunt."
